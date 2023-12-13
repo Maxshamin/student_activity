@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.student_activity.ImportController">
+    <children>
+        <AnchorPane prefHeight="46.0" prefWidth="900.0" style="-fx-background-color: #d4d2d2;">
+            <children>
+                <Button fx:id="grades_button" layoutX="14.0" layoutY="8.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="129.0" text="Выставить оценки" />
+                <Button fx:id="import_button" layoutX="272.0" layoutY="8.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="129.0" text="Импорт студентов" />
+                <Button fx:id="statistics_button" layoutX="143.0" layoutY="8.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="129.0" text="Статистика" />
+            </children></AnchorPane>
+      <TextField fx:id="groupField" layoutX="14.0" layoutY="64.0" prefHeight="25.0" prefWidth="325.0" promptText="Введите группу" />
+      <TextArea fx:id="studentsArea" layoutX="14.0" layoutY="100.0" prefHeight="443.0" prefWidth="873.0" promptText="Имя Фамилия (списком)" />
+      <Button fx:id="save_button" layoutX="14.0" layoutY="555.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="129.0" text="Сохранить" />
+    </children>
+</AnchorPane>

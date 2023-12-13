@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="600.0" prefWidth="900.0"  xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.student_activity.GradesController">
+    <children>
+        <AnchorPane prefHeight="46.0" prefWidth="900.0" style="-fx-background-color: #d4d2d2;">
+            <children>
+                <Button fx:id="grades_button" layoutX="14.0" layoutY="8.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="129.0" text="Выставить оценки" />
+                <Button fx:id="import_button" layoutX="272.0" layoutY="8.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="129.0" text="Импорт студентов" />
+                <Button fx:id="statistics_button" layoutX="143.0" layoutY="8.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="129.0" text="Статистика" />
+            </children></AnchorPane>
+      <ChoiceBox fx:id="GroupBox" layoutX="192.0" layoutY="59.0" prefWidth="150.0" />
+      <TableView fx:id="table" layoutX="14.0" layoutY="100.0" prefHeight="488.0" prefWidth="356.0" style="-fx-background-color: #d4d2d2;">
+        <columns>
+          <TableColumn fx:id="name" prefWidth="179.0" text="Имя " />
+          <TableColumn fx:id="surname" prefWidth="176.0" text="Фамилия" />
+        </columns>
+      </TableView>
+      <Label layoutX="46.0" layoutY="63.0" prefHeight="17.0" prefWidth="129.0" text="Выберите группу" />
+      <AnchorPane layoutX="386.0" layoutY="60.0" prefHeight="255.0" prefWidth="500.0" style="-fx-background-color: #d4d2d2;">
+         <children>
+            <Label layoutX="34.0" layoutY="36.0" prefHeight="17.0" prefWidth="205.0" text="Выберите практическую работу" />
+            <ChoiceBox fx:id="practical_workBox" layoutX="256.0" layoutY="32.0" prefHeight="25.0" prefWidth="224.0" />
+            <TextField fx:id="new_grade_field" layoutX="34.0" layoutY="109.0" prefHeight="25.0" prefWidth="252.0" promptText="Добавить оценку за практическую работу" />
+            <Button fx:id="new_grade_button" layoutX="355.0" layoutY="109.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="91.0" text="Сохранить" />
+            <TextField fx:id="new_practical_work_field" layoutX="34.0" layoutY="182.0" prefHeight="25.0" prefWidth="252.0" promptText="Добавить новую практическую работу" />
+            <Button fx:id="new_practical_work_button" layoutX="355.0" layoutY="182.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="91.0" text="Сохранить" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="386.0" layoutY="333.0" prefHeight="255.0" prefWidth="500.0" style="-fx-background-color: #d4d2d2;">
+         <children>
+            <Label layoutX="34.0" layoutY="41.0" prefHeight="17.0" prefWidth="205.0" text="Выберите занятие" />
+            <ChoiceBox fx:id="ClassesBox" layoutX="258.0" layoutY="37.0" prefHeight="25.0" prefWidth="224.0" />
+            <Label layoutX="34.0" layoutY="111.0" prefHeight="17.0" prefWidth="205.0" text="Отметить ученика за занятии" />
+            <Button fx:id="Class_Button" layoutX="357.0" layoutY="107.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="91.0" text="Был" />
+            <TextField fx:id="Classes_field" layoutX="34.0" layoutY="189.0" prefHeight="25.0" prefWidth="252.0" promptText="Добавить новое занятие" />
+            <Button fx:id="NewClass_Button" layoutX="357.0" layoutY="189.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="91.0" text="Сохранить" />
+         </children></AnchorPane>
+    </children>
+</AnchorPane>

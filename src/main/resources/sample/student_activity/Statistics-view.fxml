@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.student_activity.StatisticsController">
+    <children>
+        <AnchorPane prefHeight="46.0" prefWidth="900.0" style="-fx-background-color: #d4d2d2;">
+            <children>
+                <Button fx:id="grades_button" layoutX="14.0" layoutY="8.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="129.0" text="Выставить оценки" />
+                <Button fx:id="import_button" layoutX="272.0" layoutY="8.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="129.0" text="Импорт студентов" />
+                <Button fx:id="statistics_button" layoutX="143.0" layoutY="8.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="129.0" text="Статистика" />
+            </children></AnchorPane>
+        <ChoiceBox fx:id="GroupBox" layoutX="192.0" layoutY="59.0" prefWidth="150.0" />
+        <TableView fx:id="table" layoutX="14.0" layoutY="100.0" prefHeight="488.0" prefWidth="356.0" style="-fx-background-color: #d4d2d2;">
+            <columns>
+                <TableColumn fx:id="name" prefWidth="179.0" text="Имя " />
+                <TableColumn fx:id="surname" prefWidth="176.0" text="Фамилия" />
+            </columns>
+        </TableView>
+        <Label layoutX="46.0" layoutY="63.0" prefHeight="17.0" prefWidth="129.0" text="Выберите группу" />
+        <AnchorPane layoutX="386.0" layoutY="60.0" prefHeight="250.0" prefWidth="500.0" style="-fx-background-color: #d4d2d2;">
+         <children>
+            <Label fx:id="name_field" layoutX="14.0" layoutY="14.0" text="Статистика студента " />
+            <Label layoutX="14.0" layoutY="31.0" text="Оценки за работы:" />
+            <Label fx:id="Grades_field" layoutX="14.0" layoutY="48.0" />
+            <Label fx:id="Avarage_grade" layoutX="14.0" layoutY="65.0" text="Средняя оценка:" />
+            <Label layoutX="14.0" layoutY="82.0" text="Работы не сданы:" />
+            <Label fx:id="no_work" layoutX="14.0" layoutY="99.0" />
+            <Label layoutX="14.0" layoutY="117.0" text="Был на занятиях:" />
+            <Label fx:id="no_classes" layoutX="14.0" layoutY="134.0" />
+            <Label fx:id="Avarage_classes" layoutX="14.0" layoutY="151.0" />
+         </children></AnchorPane>
+      <AnchorPane layoutX="386.0" layoutY="323.0" prefHeight="263.0" prefWidth="500.0" style="-fx-background-color: #d4d2d2;">
+         <children>
+            <Label fx:id="name_group" layoutX="14.0" layoutY="14.0" text="Статистика группы" />
+            <Label fx:id="group_classes" layoutX="14.0" layoutY="31.0" />
+            <Label fx:id="group_grades" layoutX="14.0" layoutY="48.0" />
+            <Label fx:id="group_works" layoutX="14.0" layoutY="65.0" />
+         </children></AnchorPane>
+    </children>
+</AnchorPane>
