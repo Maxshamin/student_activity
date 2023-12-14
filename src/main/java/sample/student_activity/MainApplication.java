@@ -20,7 +20,8 @@ public class MainApplication extends Application {
      */
     @Override
     public void start(Stage stage) throws IOException {
-
+        //Получение параметров для подключения к база данных
+        Configs.init();
         logger.info("Открытие стартового окна");
 
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("Home-view.fxml"));
