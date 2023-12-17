@@ -44,13 +44,14 @@ public class ImportController {
      * Обрабатывает все события окна
      */
     @FXML
-    void initialize(){
+    void initialize() {
 
         //Переход на окно с выставлением оценок
         grades_button.setOnAction(actionEvent -> {
             try {
                 NewWindow("/sample/student_activity/Grades-view.fxml");
             } catch (IOException e) {
+                logger.error("Ошибка открытия окна");
                 throw new RuntimeException(e);
             }
         });
@@ -60,6 +61,7 @@ public class ImportController {
             try {
                 NewWindow("/sample/student_activity/Statistics-view.fxml");
             } catch (IOException e) {
+                logger.error("Ошибка открытия окна");
                 throw new RuntimeException(e);
             }
         });
@@ -76,10 +78,11 @@ public class ImportController {
 
     /**
      * Открытие нового окна
+     *
      * @param Window новое окно
      * @throws IOException
      */
-    public void NewWindow(String Window) throws IOException{
+    public void NewWindow(String Window) throws IOException {
         logger.info("Открытие нового окна");
         root = FXMLLoader.load(getClass().getResource(Window));
         stage = (Stage) grades_button.getScene().getWindow();

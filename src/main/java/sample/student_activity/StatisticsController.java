@@ -82,12 +82,13 @@ public class StatisticsController {
      * Обрабатывает все события окна
      */
     @FXML
-    void initialize(){
+    void initialize() {
         //Открытие окна с выставлением оценок
         grades_button.setOnAction(actionEvent -> {
             try {
                 NewWindow("/sample/student_activity/Grades-view.fxml");
             } catch (IOException e) {
+                logger.error("Ошибка открытия окна");
                 throw new RuntimeException(e);
             }
         });
@@ -97,6 +98,7 @@ public class StatisticsController {
             try {
                 NewWindow("/sample/student_activity/Import-view.fxml");
             } catch (IOException e) {
+                logger.error("Ошибка открытия окна");
                 throw new RuntimeException(e);
             }
         });
@@ -110,7 +112,7 @@ public class StatisticsController {
 
         //Обработка выбора студента в таблице
         TableView.TableViewSelectionModel<Students> selectionModel = table.getSelectionModel();
-        selectionModel.selectedItemProperty().addListener(new ChangeListener<Students>(){
+        selectionModel.selectedItemProperty().addListener(new ChangeListener<Students>() {
             @Override
             public void changed(ObservableValue<? extends Students> observableValue, Students students, Students t1) {
                 if (t1 != null) student_statistics(GroupBox.getValue(), t1.getSurname(), t1.getName());
@@ -120,10 +122,11 @@ public class StatisticsController {
 
     /**
      * Открытие нового окна
+     *
      * @param Window новое окно
      * @throws IOException
      */
-    public void NewWindow(String Window) throws IOException{
+    public void NewWindow(String Window) throws IOException {
         logger.info("Открытие нового окна");
         root = FXMLLoader.load(getClass().getResource(Window));
         stage = (Stage) grades_button.getScene().getWindow();
@@ -134,6 +137,7 @@ public class StatisticsController {
 
     /**
      * Вывод списка студентов в таблицу
+     *
      * @param actionEvent
      */
     private void SetStudents(ActionEvent actionEvent) {
@@ -159,11 +163,12 @@ public class StatisticsController {
 
     /**
      * Вывод статистики студента
-     * @param group группа
+     *
+     * @param group   группа
      * @param surname фамилия
-     * @param name имя
+     * @param name    имя
      */
-    public void student_statistics(String group, String surname, String name){
+    public void student_statistics(String group, String surname, String name) {
         DecimalFormat Format = new DecimalFormat("#.##");
         DatabaseHandler db = new DatabaseHandler();
         String[] Works = db.getPracticalWork();
@@ -171,12 +176,12 @@ public class StatisticsController {
         int[] geades = db.getStudentGrades(group, surname, Works.length);
         int[] studentClasses = db.getStudentClasses(group, surname, Classes.length);
         //Вывод имени студента
-        name_field.setText("Статистика студента "+ surname + " " + name + ":");
+        name_field.setText("Статистика студента " + surname + " " + name + ":");
         //Вывод оценок студента
         StringBuilder text = new StringBuilder();
-        for (int i = 0; i< Works.length; i++){
+        for (int i = 0; i < Works.length; i++) {
             text.append(Works[i]).append(": ");
-            if (geades[i] == 0){
+            if (geades[i] == 0) {
                 text.append("нет").append("; ");
             } else {
                 text.append(geades[i]).append("; ");
@@ -186,50 +191,51 @@ public class StatisticsController {
         //Вывод средней оценки
         int count = Works.length;
         int sum = 0;
-        for (int grade: geades){
-            if (grade != 0){
+        for (int grade : geades) {
+            if (grade != 0) {
                 sum += grade;
             } else {
                 count -= 1;
             }
         }
-        float out = (float) sum/count;
+        float out = (float) sum / count;
         Avarage_grade.setText("Средняя оценка: " + Format.format(out));
         //Нет работ
         text = new StringBuilder();
-        for (int i = 0; i < Works.length; i++){
-            if(geades[i] == 0){
+        for (int i = 0; i < Works.length; i++) {
+            if (geades[i] == 0) {
                 text.append(Works[i]).append("; ");
             }
         }
-        if (text.isEmpty()){
+        if (text.isEmpty()) {
             text.append("Все работы сданы");
         }
         no_work.setText(text.toString());
         //Был на занятиях
         sum = 0;
         text = new StringBuilder();
-        for (int i = 0; i < Classes.length; i++){
-            if (studentClasses[i] == 1){
+        for (int i = 0; i < Classes.length; i++) {
+            if (studentClasses[i] == 1) {
                 text.append(Classes[i]).append("; ");
                 sum += 1;
             }
         }
-        if (text.isEmpty()){
+        if (text.isEmpty()) {
             text.append("Не был ни на одном занятии");
         }
         no_classes.setText(text.toString());
         out = (float) sum / Classes.length * 100;
         Avarage_classes.setText("Был на " + sum + " из " + Classes.length + " занятий (" +
-               Format.format(out)  + "%)");
+                Format.format(out) + "%)");
     }
 
     /**
      * Получение массива фамилий группы
+     *
      * @param group группа
      * @return массив фамилий студентов группы group
      */
-    public String[] GetSurnames(String group){
+    public String[] GetSurnames(String group) {
         DatabaseHandler db = new DatabaseHandler();
         ResultSet Set = db.GetStudents(group);
         ArrayList<String> surnames = new ArrayList<>();
@@ -245,9 +251,10 @@ public class StatisticsController {
 
     /**
      * Статистика группы
+     *
      * @param group группа
      */
-    public void group_statistics(String group){
+    public void group_statistics(String group) {
         DatabaseHandler db = new DatabaseHandler();
         String[] Works = db.getPracticalWork();
         String[] Classes = db.getClasses();
@@ -258,17 +265,17 @@ public class StatisticsController {
         int sum_classes = 0;
         int sum_grades = 0;
         int count_grades = Works.length * Surnames.length;
-        for(String surname: Surnames){
+        for (String surname : Surnames) {
             int[] grades = db.getStudentGrades(group, surname, Works.length);
             int[] studentClasses = db.getStudentClasses(group, surname, Classes.length);
-            for (int grade: grades){
+            for (int grade : grades) {
                 if (grade != 0) {
                     sum_grades += grade;
                 } else {
                     count_grades -= 1;
                 }
             }
-            for (int classe: studentClasses){
+            for (int classe : studentClasses) {
                 sum_classes += classe;
             }
         }

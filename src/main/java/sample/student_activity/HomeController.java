@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+
 import java.io.IOException;
 
 /**
@@ -33,12 +34,13 @@ public class HomeController {
      * Обрабатывает все события окна
      */
     @FXML
-    void initialize(){
+    void initialize() {
         //Открытие окна выставления оценок
         grades_button.setOnAction(actionEvent -> {
             try {
                 NewWindow("/sample/student_activity/Grades-view.fxml");
             } catch (IOException e) {
+                logger.error("Ошибка открытия окна");
                 throw new RuntimeException(e);
             }
         });
@@ -47,6 +49,7 @@ public class HomeController {
             try {
                 NewWindow("/sample/student_activity/Statistics-view.fxml");
             } catch (IOException e) {
+                logger.error("Ошибка открытия окна");
                 throw new RuntimeException(e);
             }
         });
@@ -55,6 +58,7 @@ public class HomeController {
             try {
                 NewWindow("/sample/student_activity/Import-view.fxml");
             } catch (IOException e) {
+                logger.error("Ошибка открытия окна");
                 throw new RuntimeException(e);
             }
         });
@@ -62,10 +66,11 @@ public class HomeController {
 
     /**
      * Открытие нового окна
+     *
      * @param Window окно
      * @throws IOException
      */
-    public void NewWindow(String Window) throws IOException{
+    public void NewWindow(String Window) throws IOException {
         logger.info("Открытие нового окна");
         root = FXMLLoader.load(getClass().getResource(Window));
         stage = (Stage) grades_button.getScene().getWindow();

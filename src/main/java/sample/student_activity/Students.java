@@ -11,16 +11,18 @@ public class Students {
 
     /**
      * Конструктор класса
-     * @param name имя
+     *
+     * @param name    имя
      * @param surname фамилия
      */
-    public Students(String name, String surname){
+    public Students(String name, String surname) {
         this.name = name;
         this.surname = surname;
     }
 
     /**
      * Возврящает имя
+     *
      * @return имя
      */
     public String getName() {
@@ -29,6 +31,7 @@ public class Students {
 
     /**
      * Возвращает фамилию
+     *
      * @return фамилия
      */
     public String getSurname() {

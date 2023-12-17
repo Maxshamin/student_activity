@@ -11,7 +11,7 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- *Получение данных для подключения к базе данных из файла
+ * Получение данных для подключения к базе данных из файла
  */
 public class Configs {
     static String dbHost;
@@ -47,6 +47,7 @@ public class Configs {
 
     /**
      * Возвращает пареметр по его названию
+     *
      * @param element элементы из файла
      * @param tagName название параметра
      * @return параметр

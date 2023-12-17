@@ -6,15 +6,19 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+
 import java.io.IOException;
+
 /**
  * Главный класс, с которого начинается работа программы
  */
 public class MainApplication extends Application {
     private static final Logger logger = LogManager.getLogger();
+
     /**
      * Стартовый метод
      * Открывает стартовое окно Home-view.fxml
+     *
      * @param stage
      * @throws IOException
      */

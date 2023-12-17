@@ -88,6 +88,7 @@ public class GradesController {
             try {
                 NewWindow("/sample/student_activity/Import-view.fxml");
             } catch (IOException e) {
+                logger.error("Ошибка открытия окна");
                 throw new RuntimeException(e);
             }
         });
@@ -97,6 +98,7 @@ public class GradesController {
             try {
                 NewWindow("/sample/student_activity/Statistics-view.fxml");
             } catch (IOException e) {
+                logger.error("Ошибка открытия окна");
                 throw new RuntimeException(e);
             }
         });
